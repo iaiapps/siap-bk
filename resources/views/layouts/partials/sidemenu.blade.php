@@ -1,7 +1,6 @@
 @php
     $user = Auth::user();
     $role = $user->getRoleNames()->first();
-    $akses = session()->get('akses');
 @endphp
 
 <div class="sidebar-wrapper active">
@@ -11,31 +10,15 @@
                 <a href="{{ route('home') }}">{{ config('app.name', 'SIAP BK') }}</a>
             </div>
             <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
-                    role="img" class="iconify iconify--system-uicons" width="20" height="20"
-                    preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
-                    <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path
-                            d="M10.5 14.5c2.219 0 4-1.763 4-3.982a4.003 4.003 0 0 0-4-4.018c-2.219 0-4 1.781-4 4c0 2.219 1.781 4 4 4zM4.136 4.136L5.55 5.55m9.9 9.9l1.414 1.414M1.5 10.5h2m14 0h2M4.135 16.863L5.55 15.45m9.899-9.9l1.414-1.415M10.5 19.5v-2m0-14v-2"
-                            opacity=".3"></path>
-                        <g transform="translate(-210 -1)">
-                            <path d="M220.5 2.5v2m6.5.5l-1.5 1.5"></path>
-                            <circle cx="220.5" cy="11.5" r="4"></circle>
-                            <path d="m214 5l1.5 1.5m5 14v-2m6.5-.5l-1.5-1.5M214 18l1.5-1.5m-4-5h2m14 0h2"></path>
-                        </g>
-                    </g>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/>
                 </svg>
                 <div class="form-check form-switch fs-6">
                     <input class="form-check-input me-0" type="checkbox" id="toggle-dark" style="cursor: pointer">
                     <label class="form-check-label"></label>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
-                    role="img" class="iconify iconify--mdi" width="20" height="20" preserveAspectRatio="xMidYMid meet"
-                    viewBox="0 0 24 24">
-                    <path fill="currentColor"
-                        d="m17.75 4.09l-2.53 1.94l.91 3.06l-2.63-1.81l-2.63 1.81l.91-3.06l-2.53-1.94L12.44 4l1.06-3l1.06 3l3.19.09m3.5 6.91l-1.64 1.25l.59 1.98l-1.7-1.17l-1.7 1.17l.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95l2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85c-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14c.4-.4.82-.76 1.27-1.08c.75-.53 1.93.36 1.85 1.19c-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82c-2.81 3.14-2.7 7.96.31 10.98c3.02 3.01 7.84 3.12 10.98.31Z">
-                    </path>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 1a7 7 0 0 0-2.1 13.65c.35.05.5-.15.5-.33v-.62c0-.26-.1-.45-.2-.55-.2-.2-.3-.5-.3-.9 0-.4.15-.75.45-1 .15-.15.2-.35.15-.55-.35-1.05-.15-1.95.55-2.7.4-.45 1-1.05 1-1.95 0-.5-.2-1-.6-1.35-.4-.35-.65-.85-.65-1.45 0-.5.2-1 .6-1.35.4-.35.65-.85.65-1.45 0-1.05-1.15-1.9-2.7-1.9A5.25 5.25 0 0 0 5.4 1.55C3.8 2.1 2.65 3.7 2.65 5.55c0 1.05.4 1.95 1 2.55.15.15.2.3.15.5-.05.2-.15.35-.3.45-.4.3-.65.7-.65 1.2 0 .65.55 1.15 1.2 1.15h.1c1 .05 1.9.4 2.6 1 .35.3.55.7.55 1.2v1.35c0 .2.15.4.35.35A7 7 0 1 0 8 1"/>
                 </svg>
             </div>
             <div class="sidebar-toggler x">
@@ -51,10 +34,25 @@
         <ul class="menu">
             @switch($role)
                 @case('admin')
+                    <li class="sidebar-title">Menu</li>
                     <li class="sidebar-item {{ Route::currentRouteName() == 'home' ? 'active' : '' }}">
                         <a href="{{ route('home') }}" class="sidebar-link">
                             <i class="bi bi-house-door"></i>
-                            <span>Home</span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-title">Master Data</li>
+                    <li class="sidebar-item {{ Route::currentRouteName() == 'user.index' ? 'active' : '' }}">
+                        <a href="{{ route('user.index') }}" class="sidebar-link">
+                            <i class="bi bi-person-gear"></i>
+                            <span>Pengguna</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item {{ Route::currentRouteName() == 'classroom.index' ? 'active' : '' }}">
+                        <a href="{{ route('classroom.index') }}" class="sidebar-link">
+                            <i class="bi bi-building"></i>
+                            <span>Kelas</span>
                         </a>
                     </li>
                     <li class="sidebar-item {{ Route::currentRouteName() == 'student.index' ? 'active' : '' }}">
@@ -63,25 +61,28 @@
                             <span>Siswa</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-title">Pelanggaran & Prestasi</li>
                     <li class="sidebar-item {{ Route::currentRouteName() == 'violation.index' ? 'active' : '' }}">
                         <a href="{{ route('violation.index') }}" class="sidebar-link">
                             <i class="bi bi-x-circle"></i>
                             <span>Pelanggaran</span>
                         </a>
                     </li>
-                    <li class="sidebar-item {{ Route::currentRouteName() == 'user.index' ? 'active' : '' }}">
-                        <a href="{{ route('user.index') }}" class="sidebar-link">
-                            <i class="bi bi-person-gear"></i>
-                            <span>Master</span>
+                    <li class="sidebar-item {{ Route::currentRouteName() == 'achievment.index' ? 'active' : '' }}">
+                        <a href="{{ route('achievment.index') }}" class="sidebar-link">
+                            <i class="bi bi-trophy"></i>
+                            <span>Prestasi</span>
                         </a>
                     </li>
                 @break
 
                 @case('teacher')
+                    <li class="sidebar-title">Menu</li>
                     <li class="sidebar-item {{ Route::currentRouteName() == 'home' ? 'active' : '' }}">
                         <a href="{{ route('home') }}" class="sidebar-link">
                             <i class="bi bi-house-door"></i>
-                            <span>Home</span>
+                            <span>Dashboard</span>
                         </a>
                     </li>
                 @break

@@ -2,27 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Achievment;
+use App\Models\Classroom;
+use App\Models\Student;
+use App\Models\Teacher;
+use App\Models\Violation;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        return view('admin.home');
+        $stats = [
+            'students'    => Student::count(),
+            'teachers'    => Teacher::count(),
+            'classrooms'  => Classroom::count(),
+            'violations'  => Violation::count(),
+            'achievements' => Achievment::count(),
+        ];
+
+        return view('admin.home', compact('stats'));
     }
 }

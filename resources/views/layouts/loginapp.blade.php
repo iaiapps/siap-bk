@@ -13,6 +13,7 @@
     <!-- Mazer CSS -->
     <link rel="stylesheet" href="{{ asset('assets/mazer/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/mazer/css/app-dark.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/mazer/css/auth.css') }}">
 
     @stack('css')
 </head>

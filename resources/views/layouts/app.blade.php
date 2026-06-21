@@ -28,11 +28,7 @@
             @include('layouts.partials.sidemenu')
         </div>
         <div id="main">
-            <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
-            </header>
+            @include('layouts.partials.header')
 
             @include('layouts.partials.title')
 
@@ -46,6 +42,7 @@
     <script src="{{ asset('assets/mazer/js/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/mazer/js/app.js') }}"></script>
     <script src="{{ asset('assets/jquery/jquery-3.6.4.min.js') }}"></script>
+    @include('layouts.partials.scripts')
     @stack('scripts')
 </body>
 

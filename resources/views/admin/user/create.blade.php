@@ -4,7 +4,10 @@
 
 @section('content')
 
-    <div class="card">
+    <div class="page-content">
+        <section class="row">
+            <div class="col-12">
+                <div class="card">
         {{-- <div class="card-header bg-success">{{ __('Register') }}</div> --}}
         <div class="card-body mt-3">
             <form method="POST" action="{{ route('user.store') }}">
@@ -86,5 +89,8 @@
                 </div>
             </form>
         </div>
+    </div>
+            </div>
+        </section>
     </div>
 @endsection

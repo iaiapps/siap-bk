@@ -4,7 +4,9 @@
 
 @section('content')
 
-
+    <div class="page-content">
+        <section class="row">
+            <div class="col-12">
 
     {{-- <a href="{{ route('assign.grade') }}" class="btn btn-primary mb-3">Tentukan Kelas</a> --}}
     {{-- <a href="{{ route('assign.cluster') }}" class="btn btn-primary mb-3">Tentukan Kelompok dan Jilid</a> --}}
@@ -82,6 +84,9 @@
     </div>
 
 
+            </div>
+        </section>
+    </div>
 @endsection
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">

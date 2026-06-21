@@ -4,7 +4,10 @@
 
 @section('content')
 
-    <a href="{{ route('classroom.create') }}" class="btn btn-primary mb-3">tambah kelas</a>
+    <div class="page-content">
+        <section class="row">
+            <div class="col-12">
+                <a href="{{ route('classroom.create') }}" class="btn btn-primary mb-3">tambah kelas</a>
 
     <div class="card rounded p-3">
         <div class="table-responsive">
@@ -41,9 +44,10 @@
     </div>
 
 
+            </div>
+        </section>
+    </div>
 @endsection
-
-@include('layouts.partials.scripts')
 @push('scripts')
     <script src="{{ asset('assets/datatables/datatables.min.js') }}"></script>
     <script src="{{ asset('assets/select2/select2.min.js') }}"></script>

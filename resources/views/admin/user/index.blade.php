@@ -4,8 +4,10 @@
 
 @section('content')
 
-    {{-- @dd(Auth::user()->hasRole('admin')) --}}
-    <a href="{{ route('user.create') }}" class="btn btn-primary mb-3">tambah user</a>
+    <div class="page-content">
+        <section class="row">
+            <div class="col-12">
+                <a href="{{ route('user.create') }}" class="btn btn-primary mb-3">tambah user</a>
 
     <div class="card rounded p-3">
         <div class="table-responsive">
@@ -50,8 +52,10 @@
     </div>
 
 
+            </div>
+        </section>
+    </div>
 @endsection
-@include('layouts.partials.scripts')
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">

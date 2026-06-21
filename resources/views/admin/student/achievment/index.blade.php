@@ -4,8 +4,11 @@
 
 @section('content')
 
-    <a href="{{ route('student.index') }}" class="btn btn-primary mb-3">Kembali</a>
-    <a href="{{ route('achievment.create', ['id' => $name->id]) }}" class="btn btn-primary mb-3">Tambah Data</a>
+    <div class="page-content">
+        <section class="row">
+            <div class="col-12">
+                <a href="{{ route('student.index') }}" class="btn btn-primary mb-3">Kembali</a>
+                <a href="{{ route('achievment.create', ['id' => $name->id]) }}" class="btn btn-primary mb-3">Tambah Data</a>
 
     <div class="card rounded p-3">
         <div class="text-center">
@@ -13,7 +16,7 @@
         </div>
         <hr>
         <div class="table-responsive">
-            <table id="#" class="table">
+            <table id="table" class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -48,9 +51,9 @@
                 </tbody>
             </table>
         </div>
+            </div>
+        </section>
     </div>
-
-
 @endsection
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">

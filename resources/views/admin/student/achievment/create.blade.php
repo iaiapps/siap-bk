@@ -4,7 +4,10 @@
 
 @section('content')
 
-    <div class="card">
+    <div class="page-content">
+        <section class="row">
+            <div class="col-12">
+                <div class="card">
         <div class="card-body mt-3">
             <form method="POST" action="{{ route('achievment.store') }}">
                 @csrf
@@ -41,5 +44,8 @@
                 </div>
             </form>
         </div>
+    </div>
+            </div>
+        </section>
     </div>
 @endsection

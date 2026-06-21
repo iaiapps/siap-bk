@@ -64,6 +64,8 @@
                             <td><a href="{{ route('achievment.index', ['id' => $student->id]) }}"
                                     class="btn btn-success btn-sm">lihat</a></td>
                             <td>
+                                <a href="{{ route('student.timeline', $student->id) }}"
+                                    class="btn btn-info btn-sm">riwayat</a>
                                 <a href="{{ route('student.edit', $student->id) }}" class="btn btn-warning btn-sm">edit</a>
 
                                 <form method="POST" action="{{ route('student.destroy', $student->id) }}" class="d-inline"
@@ -89,11 +91,9 @@
     </div>
 @endsection
 @push('css')
-    <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
 @endpush
 @push('scripts')
-    <script src="{{ asset('assets/datatables/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#table').DataTable({

@@ -56,11 +56,9 @@
     </div>
 @endsection
 @push('css')
-    <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
 @endpush
 @push('scripts')
-    <script src="{{ asset('assets/datatables/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#table').DataTable({

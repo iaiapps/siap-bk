@@ -62,6 +62,14 @@
                         </a>
                     </li>
 
+                    <li class="sidebar-title">Layanan BK</li>
+                    <li class="sidebar-item {{ Str::startsWith(Route::currentRouteName(), 'counseling') ? 'active' : '' }}">
+                        <a href="{{ route('counseling.index') }}" class="sidebar-link">
+                            <i class="bi bi-chat-dots"></i>
+                            <span>Catatan Konseling</span>
+                        </a>
+                    </li>
+
                     <li class="sidebar-title">Pelanggaran & Prestasi</li>
                     <li class="sidebar-item {{ Route::currentRouteName() == 'violation.index' ? 'active' : '' }}">
                         <a href="{{ route('violation.index') }}" class="sidebar-link">

@@ -58,6 +58,37 @@ class StudentController extends Controller
         //
     }
 
+    public function timeline(Student $student)
+    {
+        $violations = $student->violations()->latest()->get();
+        $achievments = $student->achievments()->latest()->get();
+        $counselingNotes = $student->counselingNotes()->latest()->get();
+
+        $timeline = collect()
+            ->merge($violations->map(fn($v) => [
+                'date' => $v->created_at,
+                'type' => 'pelanggaran',
+                'title' => $v->violation_name,
+                'body' => null,
+            ]))
+            ->merge($achievments->map(fn($a) => [
+                'date' => $a->created_at,
+                'type' => 'prestasi',
+                'title' => $a->name_achievment . ' (' . $a->year_achievment . ')',
+                'body' => null,
+            ]))
+            ->merge($counselingNotes->map(fn($c) => [
+                'date' => $c->session_date,
+                'type' => 'konseling',
+                'title' => 'Sesi ' . $c->type . ' — ' . $c->problem_area,
+                'body' => $c->description,
+            ]))
+            ->sortByDesc('date')
+            ->values();
+
+        return view('admin.student.timeline', compact('student', 'timeline'));
+    }
+
     /**
      * Remove the specified resource from storage.
      */

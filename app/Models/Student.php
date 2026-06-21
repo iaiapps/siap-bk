@@ -15,4 +15,19 @@ class Student extends Model
     {
         return $this->belongsTo(Classroom::class);
     }
+
+    public function violations()
+    {
+        return $this->hasMany(Violation::class);
+    }
+
+    public function achievments()
+    {
+        return $this->hasMany(Achievment::class);
+    }
+
+    public function counselingNotes()
+    {
+        return $this->hasMany(CounselingNote::class);
+    }
 }

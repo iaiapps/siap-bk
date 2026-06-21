@@ -48,15 +48,15 @@
         </section>
     </div>
 @endsection
+@push('css')
+    <link rel="stylesheet" href="{{ asset('assets/datatables/keytable/keyTable.dataTables.min.css') }}">
+@endpush
 @push('scripts')
-    <script src="{{ asset('assets/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/select2/select2.min.js') }}"></script>
-    <script src="https://cdn.datatables.net/keytable/2.10.0/js/dataTables.keyTable.min.js"></script>
+    <script src="{{ asset('assets/datatables/keytable/dataTables.keyTable.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#table').DataTable({
                 "pageLength": 50,
-                "fixedColumns": true,
                 'keys': true,
             });
         });

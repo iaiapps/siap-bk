@@ -10,21 +10,22 @@
 
     <title>@yield('title') | {{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    {{-- <link rel="dns-prefetch" href="//fonts.bunny.net"> --}}
-    {{-- <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet"> --}}
+    <!-- Mazer CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/mazer/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/mazer/css/app-dark.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @stack('css')
 </head>
 
 <body>
-    <div id="app">
+    <script src="{{ asset('assets/mazer/js/initTheme.js') }}"></script>
+
+    <div id="auth">
         @yield('content')
-        </main>
     </div>
+
+    <script src="{{ asset('assets/mazer/js/dark.js') }}"></script>
+    <script src="{{ asset('assets/mazer/js/app.js') }}"></script>
     @stack('scripts')
 </body>
 

@@ -13,40 +13,40 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/grades.png') }}">
 
-    <!-- Fonts -->
-    {{-- <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet"> --}}
+    <!-- Mazer CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/mazer/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/mazer/css/app-dark.css') }}">
 
-    <!-- Custom css -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @stack('css')
 </head>
 
 <body>
+    <script src="{{ asset('assets/mazer/js/initTheme.js') }}"></script>
+
     <div id="app">
-        <!-- header -->
-        @include('layouts.partials.header')
+        <div id="sidebar">
+            @include('layouts.partials.sidemenu')
+        </div>
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
 
-        <!-- sidemenu -->
-        @include('layouts.partials.sidemenu')
-
-        <!-- content -->
-        <main id="page" class="page-margin px-3 pb-5">
             @include('layouts.partials.title')
+
             @yield('content')
 
-            <!-- footer -->
-            {{-- @include('layouts.partials.footer') --}}
-        </main>
-
+            @include('layouts.partials.footer')
+        </div>
     </div>
-</body>
 
-<!-- script -->
-<script src="{{ asset('assets/jquery/jquery-3.6.4.min.js') }}"></script>
-<script src="{{ asset('js/sidebar.js') }}"></script>
-@stack('scripts')
+    <script src="{{ asset('assets/mazer/js/dark.js') }}"></script>
+    <script src="{{ asset('assets/mazer/js/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/mazer/js/app.js') }}"></script>
+    <script src="{{ asset('assets/jquery/jquery-3.6.4.min.js') }}"></script>
+    @stack('scripts')
+</body>
 
 </html>

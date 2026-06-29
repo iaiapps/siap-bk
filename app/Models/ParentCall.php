@@ -26,4 +26,24 @@ class ParentCall extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function isPublished(): bool
+    {
+        return $this->status === 'published';
+    }
+
+    public function isCompleted(): bool
+    {
+        return $this->status === 'completed';
+    }
+
+    public function isCancelled(): bool
+    {
+        return $this->status === 'cancelled';
+    }
+
+    public function isDraft(): bool
+    {
+        return $this->status === 'draft';
+    }
 }

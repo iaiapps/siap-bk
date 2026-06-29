@@ -47,7 +47,7 @@ class ClassroomController extends Controller
      */
     public function edit(Classroom $classroom)
     {
-        //
+        return view('admin.classroom.edit', compact('classroom'));
     }
 
     /**
@@ -55,7 +55,13 @@ class ClassroomController extends Controller
      */
     public function update(Request $request, Classroom $classroom)
     {
-        //
+        $data = $request->validate([
+            'classroom' => 'required|string|max:255',
+        ]);
+
+        $classroom->update($data);
+
+        return redirect()->route('classroom.index')->with('success', 'Data kelas berhasil diperbarui.');
     }
 
     /**
@@ -63,6 +69,7 @@ class ClassroomController extends Controller
      */
     public function destroy(Classroom $classroom)
     {
-        //
+        $classroom->delete();
+        return redirect()->route('classroom.index')->with('success', 'Data kelas berhasil dihapus.');
     }
 }

@@ -65,7 +65,8 @@ class AchievmentController extends Controller
      */
     public function edit(Achievment $achievment)
     {
-        //
+        $achievment->load('student');
+        return view('admin.student.achievment.edit', compact('achievment'));
     }
 
     /**
@@ -73,7 +74,15 @@ class AchievmentController extends Controller
      */
     public function update(Request $request, Achievment $achievment)
     {
-        //
+        $data = $request->validate([
+            'name_achievment' => 'required|string|max:255',
+            'year_achievment' => 'required|string|max:20',
+        ]);
+
+        $achievment->update($data);
+
+        return redirect()->route('achievment.index', ['id' => $achievment->student_id])
+            ->with('success', 'Data prestasi berhasil diperbarui.');
     }
 
     /**
@@ -81,6 +90,10 @@ class AchievmentController extends Controller
      */
     public function destroy(Achievment $achievment)
     {
-        //
+        $studentId = $achievment->student_id;
+        $achievment->delete();
+
+        return redirect()->route('achievment.index', ['id' => $studentId])
+            ->with('success', 'Data prestasi berhasil dihapus.');
     }
 }

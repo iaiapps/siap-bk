@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classroom;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,8 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        $classrooms = Classroom::all();
+        return view('admin.student.edit', compact('student', 'classrooms'));
     }
 
     /**
@@ -55,7 +57,15 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'gender' => 'required|in:L,P',
+            'classroom_id' => 'nullable|exists:classrooms,id',
+        ]);
+
+        $student->update($data);
+
+        return redirect()->route('student.index')->with('success', 'Data siswa berhasil diperbarui.');
     }
 
     public function timeline(Student $student)
@@ -94,6 +104,7 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect()->route('student.index')->with('success', 'Data siswa berhasil dihapus.');
     }
 }

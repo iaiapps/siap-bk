@@ -50,7 +50,9 @@ class ViolationController extends Controller
      */
     public function edit(Violation $violation)
     {
-        //
+        $violation->load('student');
+        $students = Student::all();
+        return view('admin.violation.edit', compact('violation', 'students'));
     }
 
     /**
@@ -58,7 +60,14 @@ class ViolationController extends Controller
      */
     public function update(Request $request, Violation $violation)
     {
-        //
+        $data = $request->validate([
+            'violation_name' => 'required|string',
+            'point' => 'nullable|string|max:255',
+        ]);
+
+        $violation->update($data);
+
+        return redirect()->route('violation.index')->with('success', 'Data pelanggaran berhasil diperbarui.');
     }
 
     /**
@@ -66,6 +75,7 @@ class ViolationController extends Controller
      */
     public function destroy(Violation $violation)
     {
-        //
+        $violation->delete();
+        return redirect()->route('violation.index')->with('success', 'Data pelanggaran berhasil dihapus.');
     }
 }

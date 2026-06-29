@@ -52,7 +52,7 @@
                 @if ($students->isNotEmpty())
                     <div class="card rounded p-3">
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <h6 class="mb-0">Periode: {{ $start->format('d M Y') }} — {{ $end->format('d M Y') }}</h6>
+                            <h6 class="mb-0">Periode: {{ $start->translatedFormat('j F Y') }} — {{ $end->translatedFormat('j F Y') }}</h6>
                             <small class="text-muted">{{ $students->count() }} siswa</small>
                         </div>
                         <div class="table-responsive">

@@ -26,9 +26,9 @@
                                 @foreach ($counselingNotes as $note)
                                     <tr>
                                         <td>{{ $note->id }}</td>
-                                        <td>{{ $note->session_date }}</td>
+                                        <td>{{ $note->session_date->translatedFormat('j F Y') }}</td>
                                         <td>{{ $note->student->name }}</td>
-                                        <td>{{ $note->type }}</td>
+                                        <td>{{ $note->type === 'individual' ? 'Individual' : 'Kelompok' }}</td>
                                         <td>{{ $note->problem_area }}</td>
                                         <td>{{ $note->user->name }}</td>
                                         <td>

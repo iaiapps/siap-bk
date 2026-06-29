@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('attendance_date')->nullable();
             $table->text('notes')->nullable();
             $table->text('follow_up')->nullable();
+            $table->string('status', 20)->default('published')->after('follow_up');
             $table->timestamps();
         });
     }

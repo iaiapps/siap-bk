@@ -34,6 +34,15 @@ class HomeController extends Controller
         $recentViolations = Violation::with('student')->latest()->take(5)->get();
         $recentCounseling = CounselingNote::with('student', 'user')->latest()->take(5)->get();
 
-        return view('admin.home', compact('stats', 'recentViolations', 'recentCounseling'));
+        $violationsPerMonth = Violation::selectRaw("DATE_FORMAT(created_at, '%Y-%m') as month, COUNT(*) as total")
+            ->groupBy('month')->orderBy('month')->pluck('total', 'month');
+
+        $appointmentStatus = Appointment::selectRaw("status, COUNT(*) as total")
+            ->groupBy('status')->pluck('total', 'status');
+
+        return view('admin.home', compact(
+            'stats', 'recentViolations', 'recentCounseling',
+            'violationsPerMonth', 'appointmentStatus'
+        ));
     }
 }

@@ -35,7 +35,7 @@
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between">
                                         <strong>{{ $item['title'] }}</strong>
-                                        <small class="text-muted">{{ $item['date']->format('d M Y') }}</small>
+                                        <small class="text-muted">{{ $item['date']->translatedFormat('j F Y') }}</small>
                                     </div>
                                     @if ($item['body'])
                                         <p class="mb-0 mt-1">{{ $item['body'] }}</p>

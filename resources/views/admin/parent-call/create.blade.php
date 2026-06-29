@@ -39,41 +39,9 @@
                                     placeholder="Jelaskan alasan orang tua dipanggil ke sekolah"></textarea>
                             </div>
 
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label class="form-label">Kehadiran Orang Tua</label>
-                                    <div class="d-flex gap-3 mt-1">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="parent_attended"
-                                                id="attended_yes" value="1">
-                                            <label class="form-check-label" for="attended_yes">Hadir</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="parent_attended"
-                                                id="attended_no" value="0">
-                                            <label class="form-check-label" for="attended_no">Tidak Hadir</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="attendance_date" class="form-label">Tanggal Kehadiran</label>
-                                    <input type="date" class="form-control" id="attendance_date" name="attendance_date">
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="follow_up" class="form-label">Tindak Lanjut</label>
-                                <textarea class="form-control" id="follow_up" rows="2" name="follow_up"></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="notes" class="form-label">Catatan Tambahan</label>
-                                <textarea class="form-control" id="notes" rows="2" name="notes"></textarea>
-                            </div>
-
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-success">
-                                    Simpan Panggilan
+                                    Terbitkan Panggilan
                                 </button>
                             </div>
                         </form>

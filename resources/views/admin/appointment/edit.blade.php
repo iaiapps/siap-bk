@@ -46,10 +46,10 @@
                                 <div class="col-md-6">
                                     <label for="status" class="form-label">Status</label>
                                     <select class="form-select" id="status" name="status">
-                                        <option value="pending" {{ $appointment->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                                        <option value="confirmed" {{ $appointment->status == 'confirmed' ? 'selected' : '' }}>Confirmed</option>
-                                        <option value="cancelled" {{ $appointment->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
-                                        <option value="completed" {{ $appointment->status == 'completed' ? 'selected' : '' }}>Completed</option>
+                                        <option value="pending" {{ $appointment->status == 'pending' ? 'selected' : '' }}>Menunggu</option>
+                                        <option value="confirmed" {{ $appointment->status == 'confirmed' ? 'selected' : '' }}>Dikonfirmasi</option>
+                                        <option value="cancelled" {{ $appointment->status == 'cancelled' ? 'selected' : '' }}>Dibatalkan</option>
+                                        <option value="completed" {{ $appointment->status == 'completed' ? 'selected' : '' }}>Selesai</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">

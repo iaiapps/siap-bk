@@ -18,7 +18,7 @@
                                     <th scope="col">Tanggal</th>
                                     <th scope="col">Siswa</th>
                                     <th scope="col">Alasan</th>
-                                    <th scope="col">Hadir</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Guru BK</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -28,20 +28,30 @@
                                     <tr>
                                         <td>{{ $pc->id }}</td>
                                         <td>{{ $pc->letter_number ?? '-' }}</td>
-                                        <td>{{ $pc->call_date }}</td>
+                                        <td>{{ $pc->call_date->translatedFormat('j F Y') }}</td>
                                         <td>{{ $pc->student->name }}</td>
                                         <td>{{ Str::limit($pc->call_reason, 40) }}</td>
                                         <td>
-                                            @if ($pc->parent_attended === true)
-                                                <span class="badge bg-success">Ya</span>
-                                            @elseif ($pc->parent_attended === false)
-                                                <span class="badge bg-danger">Tidak</span>
-                                            @else
-                                                <span class="badge bg-secondary">-</span>
+                                            @if ($pc->status === 'draft')
+                                                <span class="badge bg-secondary">Draft</span>
+                                            @elseif ($pc->status === 'published')
+                                                <span class="badge bg-primary">Surat Diterbitkan</span>
+                                            @elseif ($pc->status === 'completed')
+                                                @if ($pc->parent_attended)
+                                                    <span class="badge bg-success">Hadir</span>
+                                                @else
+                                                    <span class="badge bg-danger">Tidak Hadir</span>
+                                                @endif
+                                            @elseif ($pc->status === 'cancelled')
+                                                <span class="badge bg-warning text-dark">Dibatalkan</span>
                                             @endif
                                         </td>
                                         <td>{{ $pc->user->name }}</td>
                                         <td>
+                                            @if ($pc->status === 'published')
+                                                <a href="{{ route('parent-call.confirm', $pc->id) }}"
+                                                    class="btn btn-info btn-sm">konfirmasi</a>
+                                            @endif
                                             <a href="{{ route('parent-call.edit', $pc->id) }}"
                                                 class="btn btn-warning btn-sm">edit</a>
                                             <form method="POST" action="{{ route('parent-call.destroy', $pc->id) }}"

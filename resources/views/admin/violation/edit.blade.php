@@ -19,9 +19,15 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="violation" class="form-label">Keterangan pelanggaran</label>
-                                <textarea class="form-control" id="violation" rows="3"
+                                <label for="violation_name" class="form-label">Keterangan pelanggaran</label>
+                                <textarea class="form-control" id="violation_name" rows="3"
                                     name="violation_name">{{ old('violation_name', $violation->violation_name) }}</textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="point" class="form-label">Poin</label>
+                                <input type="text" class="form-control" id="point" name="point"
+                                    value="{{ old('point', $violation->point) }}">
                             </div>
 
                             <div class="mb-3">

@@ -27,7 +27,7 @@
                                 @foreach ($appointments as $a)
                                     <tr>
                                         <td>{{ $a->id }}</td>
-                                        <td>{{ $a->appointment_date }}</td>
+                                        <td>{{ $a->appointment_date->translatedFormat('j F Y') }}</td>
                                         <td>{{ $a->appointment_time }}</td>
                                         <td>{{ $a->student->name }}</td>
                                         <td>{{ $a->reason }}</td>
@@ -39,8 +39,14 @@
                                                     'cancelled' => 'danger',
                                                     'completed' => 'success',
                                                 };
+                                                $label = match ($a->status) {
+                                                    'pending' => 'Menunggu',
+                                                    'confirmed' => 'Dikonfirmasi',
+                                                    'cancelled' => 'Dibatalkan',
+                                                    'completed' => 'Selesai',
+                                                };
                                             @endphp
-                                            <span class="badge bg-{{ $badge }}">{{ $a->status }}</span>
+                                            <span class="badge bg-{{ $badge }}">{{ $label }}</span>
                                         </td>
                                         <td>{{ $a->user->name }}</td>
                                         <td>

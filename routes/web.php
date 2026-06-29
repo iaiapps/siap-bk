@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('/counseling', CounselingNoteController::class);
         Route::resource('/appointment', AppointmentController::class);
         Route::resource('/parent-call', ParentCallController::class);
+        Route::get('/parent-call/{parent_call}/confirm', [ParentCallController::class, 'confirm'])->name('parent-call.confirm');
+        Route::put('/parent-call/{parent_call}/attendance', [ParentCallController::class, 'markAttendance'])->name('parent-call.attendance');
         Route::get('/report/semester', [ReportController::class, 'semester'])->name('report.semester');
         Route::get('/report/semester/{student}', [ReportController::class, 'semesterStudent'])->name('report.semester-student');
 

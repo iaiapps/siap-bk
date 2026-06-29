@@ -37,18 +37,18 @@ class CounselingNoteController extends Controller
         return redirect()->route('counseling.index');
     }
 
-    public function show(CounselingNote $counselingNote)
+    public function show(CounselingNote $counseling)
     {
         //
     }
 
-    public function edit(CounselingNote $counselingNote)
+    public function edit(CounselingNote $counseling)
     {
         $students = Student::all();
-        return view('admin.counseling.edit', compact('counselingNote', 'students'));
+        return view('admin.counseling.edit', compact('counseling', 'students'));
     }
 
-    public function update(Request $request, CounselingNote $counselingNote)
+    public function update(Request $request, CounselingNote $counseling)
     {
         $data = $request->validate([
             'student_id' => 'required|exists:students,id',
@@ -60,13 +60,13 @@ class CounselingNoteController extends Controller
             'follow_up' => 'required|string',
             'notes' => 'nullable|string',
         ]);
-        $counselingNote->update($data);
+        $counseling->update($data);
         return redirect()->route('counseling.index');
     }
 
-    public function destroy(CounselingNote $counselingNote)
+    public function destroy(CounselingNote $counseling)
     {
-        $counselingNote->delete();
+        $counseling->delete();
         return redirect()->route('counseling.index');
     }
 }

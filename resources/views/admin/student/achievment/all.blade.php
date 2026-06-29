@@ -7,19 +7,14 @@
     <div class="page-content">
         <section class="row">
             <div class="col-12">
-                <a href="{{ route('student.index') }}" class="btn btn-primary mb-3">Kembali</a>
-                <a href="{{ route('achievment.create', ['id' => $name->id]) }}" class="btn btn-primary mb-3">Tambah Data</a>
 
     <div class="card rounded p-3">
-        <div class="text-center">
-            <p class="fs-5 m-0">Nama Siswa : {{ $name->name }}</p>
-        </div>
-        <hr>
         <div class="table-responsive">
             <table id="table" class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Nama Siswa</th>
                         <th scope="col">Nama Prestasi</th>
                         <th scope="col">Tahun</th>
                         <th scope="col">Action</th>
@@ -29,6 +24,7 @@
                     @forelse ($achievments as $achievment)
                         <tr>
                             <td>{{ $achievment->id }}</td>
+                            <td>{{ $achievment->student->name }}</td>
                             <td>{{ $achievment->name_achievment }}</td>
                             <td>{{ $achievment->year_achievment }}</td>
                             <td>
@@ -48,6 +44,8 @@
                 </tbody>
             </table>
         </div>
+    </div>
+
             </div>
         </section>
     </div>

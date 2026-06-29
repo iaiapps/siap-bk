@@ -30,4 +30,14 @@ class Student extends Model
     {
         return $this->hasMany(CounselingNote::class);
     }
+
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
+    public function parentCalls()
+    {
+        return $this->hasMany(ParentCall::class);
+    }
 }

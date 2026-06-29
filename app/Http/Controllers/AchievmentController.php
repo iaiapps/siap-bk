@@ -14,10 +14,18 @@ class AchievmentController extends Controller
     public function index(Request $request)
     {
         $id = $request->id;
-        // dd($id);
-        $name = Student::where('id', '=', $id)->first();
+        if (!$id) {
+            return redirect()->route('student.index')->with('error', 'Pilih siswa terlebih dahulu.');
+        }
+        $name = Student::findOrFail($id);
         $achievments = Achievment::where('student_id', '=', $id)->get();
         return view('admin.student.achievment.index', compact('achievments', 'name'));
+    }
+
+    public function all()
+    {
+        $achievments = Achievment::with('student')->get();
+        return view('admin.student.achievment.all', compact('achievments'));
     }
 
     /**
@@ -26,7 +34,10 @@ class AchievmentController extends Controller
     public function create(Request $request)
     {
         $id = $request->id;
-        $name = Student::where('id', '=', $id)->first();
+        if (!$id) {
+            return redirect()->route('student.index')->with('error', 'Pilih siswa terlebih dahulu.');
+        }
+        $name = Student::findOrFail($id);
         return view('admin.student.achievment.create', compact('name'));
     }
 

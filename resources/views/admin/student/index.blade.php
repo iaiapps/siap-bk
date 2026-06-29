@@ -49,8 +49,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Gender</th>
-                        {{-- <th scope="col">Kelas</th> --}}
-                        <th scope="col">Prestasi</th>
+                        <th scope="col">Kelas</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -60,9 +59,7 @@
                             <td>{{ $student->id }}</td>
                             <td>{{ $student->name }}</td>
                             <td>{{ $student->gender ?? 'belum ditentukan' }}</td>
-                            {{-- <td>{{ $student->classroom->classroom ?? 'belum ditentukan' }}</td> --}}
-                            <td><a href="{{ route('achievment.index', ['id' => $student->id]) }}"
-                                    class="btn btn-success btn-sm">lihat</a></td>
+                            <td>{{ $student->classroom->classroom ?? 'belum ditentukan' }}</td>
                             <td>
                                 <a href="{{ route('student.timeline', $student->id) }}"
                                     class="btn btn-info btn-sm">riwayat</a>
@@ -77,7 +74,6 @@
                             </td>
                         </tr>
                     @empty
-                        <td>data belum ada</td>
                     @endforelse
 
                 </tbody>
@@ -97,7 +93,10 @@
     <script>
         $(document).ready(function() {
             $('#table').DataTable({
-                "pageLength": 50
+                pageLength: 50,
+                language: {
+                    emptyTable: 'data belum ada'
+                }
             });
         });
     </script>

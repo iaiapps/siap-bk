@@ -11,7 +11,7 @@
     <title>@yield('title') | {{ config('app.name', 'Laravel') }}</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/grades.png') }}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Mazer CSS -->
     <link rel="stylesheet" href="{{ asset('assets/mazer/css/app.css') }}">

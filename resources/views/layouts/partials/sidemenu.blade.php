@@ -7,26 +7,34 @@
     <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
             <div class="logo">
-                <a href="{{ route('home') }}">{{ config('app.name', 'SIAP BK') }}</a>
+                <a href="{{ route('home') }}" class="text-decoration-none d-flex align-items-center gap-2">
+                    <span class="fw-bold mb-0" style="font-size:1.25rem">{{ config('app.name', 'SIAP BK') }}</span>
+                </a>
             </div>
             <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 21 21" fill="none"
+                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M10.5 14.5c2.219 0 4-1.763 4-3.982a4.003 4.003 0 0 0-4-4.018c-2.219 0-4 1.781-4 4c0 2.219 1.781 4 4 4z"
+                        opacity=".3" />
+                    <path
+                        d="M4.136 4.136L5.55 5.55m9.9 9.9l1.414 1.414M1.5 10.5h2m14 0h2M4.135 16.863L5.55 15.45m9.899-9.9l1.414-1.415M10.5 19.5v-2m0-14v-2"
+                        opacity=".3" />
+                    <circle cx="10.5" cy="11.5" r="4" />
                 </svg>
                 <div class="form-check form-switch fs-6">
-                    <input class="form-check-input me-0" type="checkbox" id="toggle-dark" style="cursor: pointer">
+                    <input class="form-check-input me-0" type="checkbox" id="toggle-dark" style="cursor:pointer">
                     <label class="form-check-label"></label>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8 1a7 7 0 0 0-2.1 13.65c.35.05.5-.15.5-.33v-.62c0-.26-.1-.45-.2-.55-.2-.2-.3-.5-.3-.9 0-.4.15-.75.45-1 .15-.15.2-.35.15-.55-.35-1.05-.15-1.95.55-2.7.4-.45 1-1.05 1-1.95 0-.5-.2-1-.6-1.35-.4-.35-.65-.85-.65-1.45 0-.5.2-1 .6-1.35.4-.35.65-.85.65-1.45 0-1.05-1.15-1.9-2.7-1.9A5.25 5.25 0 0 0 5.4 1.55C3.8 2.1 2.65 3.7 2.65 5.55c0 1.05.4 1.95 1 2.55.15.15.2.3.15.5-.05.2-.15.35-.3.45-.4.3-.65.7-.65 1.2 0 .65.55 1.15 1.2 1.15h.1c1 .05 1.9.4 2.6 1 .35.3.55.7.55 1.2v1.35c0 .2.15.4.35.35A7 7 0 1 0 8 1"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                        d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z" />
                 </svg>
             </div>
             <div class="sidebar-toggler x">
                 <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
             </div>
-        </div>
-        <div class="text-center mt-2">
-            <small>{{ $user->teacher->name ?? $user->name }}</small>
         </div>
     </div>
 
@@ -70,6 +78,33 @@
                         </a>
                     </li>
 
+                    <li class="sidebar-item {{ Str::startsWith(Route::currentRouteName(), 'appointment') ? 'active' : '' }}">
+                        <a href="{{ route('appointment.index') }}" class="sidebar-link">
+                            <i class="bi bi-calendar-check"></i>
+                            <span>Janji Temu Siswa</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item {{ Str::startsWith(Route::currentRouteName(), 'parent-call') ? 'active' : '' }}">
+                        <a href="{{ route('parent-call.index') }}" class="sidebar-link">
+                            <i class="bi bi-telephone"></i>
+                            <span>Panggilan Orang Tua</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-title">Laporan</li>
+                    <li class="sidebar-item {{ Route::currentRouteName() == 'report.semester' ? 'active' : '' }}">
+                        <a href="{{ route('report.semester') }}" class="sidebar-link">
+                            <i class="bi bi-file-text"></i>
+                            <span>Laporan BK Semester</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item {{ Str::startsWith(Route::currentRouteName(), 'import-export') ? 'active' : '' }}">
+                        <a href="{{ route('import-export.index') }}" class="sidebar-link">
+                            <i class="bi bi-database"></i>
+                            <span>Import / Export Data</span>
+                        </a>
+                    </li>
+
                     <li class="sidebar-title">Pelanggaran & Prestasi</li>
                     <li class="sidebar-item {{ Route::currentRouteName() == 'violation.index' ? 'active' : '' }}">
                         <a href="{{ route('violation.index') }}" class="sidebar-link">
@@ -77,10 +112,10 @@
                             <span>Pelanggaran</span>
                         </a>
                     </li>
-                    <li class="sidebar-item {{ Route::currentRouteName() == 'achievment.index' ? 'active' : '' }}">
-                        <a href="{{ route('achievment.index') }}" class="sidebar-link">
+                    <li class="sidebar-item {{ Route::currentRouteName() == 'achievment.all' ? 'active' : '' }}">
+                        <a href="{{ route('achievment.all') }}" class="sidebar-link">
                             <i class="bi bi-trophy"></i>
-                            <span>Prestasi</span>
+                            <span>Prestasi Siswa</span>
                         </a>
                     </li>
                 @break

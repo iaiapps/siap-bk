@@ -1,3 +1,3 @@
-<footer class="text-center mt-5 p-2 bg-white">
-    {{ config('app.name', 'SIAP BK') }} &copy; {{ date('Y') }}
-</footer>
+{{-- <footer>
+    <p>{{ date('Y') }} &copy; {{ config('app.name', 'SIAP BK') }}</p>
+</footer> --}}
